@@ -1,4 +1,4 @@
 # Parcial Práctico 2
 
-- Nombre:
-- código:
+- Nombre: David Felipe Velasquez Parra 
+- código: 202321492
