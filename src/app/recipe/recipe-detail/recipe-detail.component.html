@@ -1,29 +1,42 @@
-<div class="container mt-4" *ngIf="recipe">
-  <h2 class="mb-3">{{ recipe.nombre }}</h2>
-  <img [src]="recipe.imagen" [alt]="recipe.nombre" class="img-fluid mb-4" />
+<div>
+  <div class="bg-white p-4">
+    <h2 class="text-center mb-4">{{ recipe?.nombre }}</h2>
 
-  <p><strong>Porciones:</strong> {{ recipe.porciones }}</p>
-  <p><strong>Tiempo de preparación:</strong> {{ recipe.tiempo_minutos }} minutos</p>
-  <p><strong>Dificultad:</strong> {{ recipe.dificultad }}</p>
-  <p><strong>Tipo:</strong> {{ recipe.tipo }}</p>
+    <div class="row">
+      <div class="col-md-5 text-center">
+        <img [src]="recipe?.imagen" [alt]="recipe?.nombre" class="img-fluid" />
+      </div>
 
-  <h4 class="mt-4">Ingredientes</h4>
-  <ul>
-    <li *ngFor="let i of recipe.ingredientes">
-      {{ i.cantidad }} {{ i.unidad }} de {{ i.nombre }}
-    </li>
-  </ul>
+      <div class="col-md-7">
+        <div class="row mb-3">
+          <div class="col"><strong>Porciones:</strong> {{ recipe?.porciones }}</div>
+          <div class="col"><strong>Tiempo:</strong> {{ recipe?.tiempo_minutos }} min</div>
+        </div>
+        <div class="row mb-3">
+          <div class="col"><strong>Dificultad:</strong> {{ recipe?.dificultad }}</div>
+          <div class="col"><strong>Tipo:</strong> {{ recipe?.tipo }}</div>
+        </div>
 
-  <h4 class="mt-4">Pasos</h4>
-  <ol>
-    <li *ngFor="let paso of recipe.pasos">
-      {{ paso }}
-    </li>
-  </ol>
+        <hr />
 
-  <button class="btn btn-secondary mt-4" routerLink="/recipes">← Volver al listado</button>
-</div>
+        <h5><strong>Ingredientes</strong></h5>
+        <ul>
+          <li *ngFor="let i of recipe?.ingredientes">
+            {{ i.nombre }} - {{ i.cantidad }} {{ i.unidad }}
+          </li>
+        </ul>
 
-<div class="container mt-4" *ngIf="!recipe">
-  <p class="text-danger">No se encontró la receta.</p>
+        <hr />
+
+        <h5><strong>Pasos</strong></h5>
+        <ol>
+          <li *ngFor="let paso of recipe?.pasos">{{ paso }}</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="text-start mt-4">
+      <button class="btn btn-primary" routerLink="/recipes">Regresar</button>
+    </div>
+  </div>
 </div>
