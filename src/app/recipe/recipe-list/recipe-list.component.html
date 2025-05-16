@@ -1,31 +1,21 @@
-<div>
-  <div>
-    <div *ngIf="selected">
-      <app-recipe-detail [recipe]="selectedRecipe"></app-recipe-detail>
+<div class="container mt-4">
+  <h2 class="mb-4 text-center">Recetas Uniandes</h2>
+
+  <div class="row row-cols-1 row-cols-md-4 g-4">
+    <div class="col" *ngFor="let recipe of recipes">
+      <div class="card h-100" (click)="goToDetail(recipe.id)" style="cursor: pointer;">
+        <img [src]="recipe.imagen" class="card-img-top" [alt]="recipe.nombre">
+        <div class="card-body">
+          <h5 class="card-title">{{ recipe.nombre }}</h5>
+          <ul>
+            <li *ngFor="let etiqueta of recipe.etiquetas">
+              {{ etiqueta }}
+            </li>
+          </ul>
+          <p class="card-text"><strong>Numero de Porciones: </strong>{{ recipe.porciones }}</p>
+          <p><strong># Ingredientes:</strong> {{ countIngredients(recipe) }}</p>
+        </div>
+      </div>
     </div>
-    <table>
-      <thead>
-        <tr>
-          <th>Receta</th>
-          <th>Imagen</th>
-          <th>Porciones</th>
-          <th>Tiempo</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let recipe of recipes" (click)="onSelect(recipe)">
-          <td>{{ recipe.nombre }}</td>
-          <td>
-            <img
-              class="recipe-img"
-              [src]="recipe.imagen"
-              alt="{{ recipe.imagen }}"
-            />
-          </td>
-          <td>{{ recipe.porciones }}</td>
-          <td>{{ recipe.tiempo_minutos }} min</td>
-        </tr>
-      </tbody>
-    </table>
   </div>
 </div>
